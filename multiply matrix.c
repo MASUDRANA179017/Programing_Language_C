@@ -1,54 +1,52 @@
 #include <stdio.h>
 
 int main() {
-    int m, n, p, q, c, d, k, sum = 0;
+    int rows, cols;
 
-    printf("Enter Matrix A's row and column: ");
-    scanf("%d%d", &m, &n);
+    // Prompt user for matrix size
+    printf("Enter the number of rows and columns: ");
+    scanf("%d %d", &rows, &cols);
 
-    printf("Enter Matrix B's row and column: ");
-    scanf("%d%d", &p, &q);
+    // Declare two matrices and a result matrix
+    int mat1[rows][cols];
+    int mat2[rows][cols];
+    int result[rows][cols];
 
-    if (n != p) {
-        printf("Matrices with entered orders can't be multiplied with each other.\n");
-    } else {
-        int first[m][n], second[p][q], multiply[m][q];
-
-        printf("Enter elements of matrix A:\n");
-
-        for (c = 0; c < m; c++) {
-            for (d = 0; d < n; d++) {
-                scanf("%d", &first[c][d]);
-            }
+    // Get elements for the first matrix
+    printf("Enter the elements of the first matrix:\n");
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            scanf("%d", &mat1[i][j]);
         }
+    }
 
-        printf("Enter elements of matrix B:\n");
-
-        for (c = 0; c < p; c++) {
-            for (d = 0; d < q; d++) {
-                scanf("%d", &second[c][d]);
-            }
+    // Get elements for the second matrix
+    printf("Enter the elements of the second matrix:\n");
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            scanf("%d", &mat2[i][j]);
         }
+    }
 
-        for (c = 0; c < m; c++) {
-            for (d = 0; d < q; d++) {
-                for (k = 0; k < p; k++) {
-                    sum = sum + first[c][k] * second[k][d];
-                }
-                multiply[c][d] = sum;
-                sum = 0;
-            }
+    // Add the matrices
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            result[i][j] = mat1[i][j] + mat2[i][j];
         }
+    }
 
-        printf("The Multiplication of two matrices is:\n");
-
-        for (c = 0; c < m; c++) {
-            for (d = 0; d < q; d++) {
-                printf("%d\t", multiply[c][d]);
-            }
-            printf("\n");
+    // Display the result matrix
+    printf("The resulting matrix after addition is:\n");
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            printf("%d ", result[i][j]);
         }
+        printf("\n");
     }
 
     return 0;
 }
+
+
+
+
